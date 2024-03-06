@@ -28,6 +28,13 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'likes',
+      title: 'Likes',
+      type: 'number',
+      initialValue: 0, // Optional: Set initial value to 0
+      readOnly: true, // Optional: Make it read-only in the Sanity Studio
+    }),
+    defineField({
       name: 'overview',
       description:
         'Used both for the <meta> description tag for SEO, and project subheader.',

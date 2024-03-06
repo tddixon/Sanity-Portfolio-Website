@@ -10,7 +10,7 @@
     "dev": "next",
     "format": "bunx prettier --write . --ignore-path .gitignore",
     "lint": "next lint -- --ignore-path .gitignore",
-    "lint:fix": "bun run format && bun run lint -- m-fix",
+    "lint:fix": "bun run format && bun run eslint --fix",
     "start": "next start",
     "type-check": "tsc --noEmit"
   },
