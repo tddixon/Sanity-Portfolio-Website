@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { MenuItem, SettingsPayload } from '@/types'
 
-import {ThemeToggle} from './themeToggle.tsx'
+import { ThemeToggle } from './themeToggle'
 
 interface NavbarProps {
   data: SettingsPayload
@@ -22,11 +22,10 @@ export default function Navbar(props: NavbarProps) {
           return (
             <Link
               key={key}
-              className={`text-lg hover:text-black md:text-xl ${
-                menuItem?._type === 'home'
+              className={`text-lg hover:text-black md:text-xl ${menuItem?._type === 'home'
                   ? 'font-extrabold text-black'
                   : 'text-gray-600'
-              }`}
+                }`}
               href={href}
             >
               {menuItem.title}
