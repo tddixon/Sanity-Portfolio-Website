@@ -19,16 +19,24 @@ export default function Navbar(props: NavbarProps) {
 
   return (
     <div className="sticky top-0 z-10 justify-between w-full  flex flex-wrap items-center gap-x-5  px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-18">
-      {/* Display Home Link */}
-      {homeMenuItem && (
-        <Link
-          key="home"
-          className="text-lg font-extrabold text-black hover:text-black md:text-xl"
-          href={resolveHref(homeMenuItem?._type, homeMenuItem?.slug)}
-        >
-          {homeMenuItem.title}
-        </Link>
-      )}
+      {homeMenuItem && (() => {
+        const href = resolveHref(homeMenuItem?._type, homeMenuItem?.slug);
+        if (!href) {
+          return null;
+        }
+
+        return (
+          <Link
+            key="home"
+            className="text-lg font-extrabold text-black hover:text-black md:text-xl"
+            href={href}
+          >
+            {homeMenuItem.title}
+          </Link>
+        );
+      })()}
+
+
       <div className="flex items-center gap-20">
         {/* Display other links */}
         <nav className="flex gap-5">
