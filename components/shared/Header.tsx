@@ -14,7 +14,7 @@ export function Header(props: HeaderProps) {
     <div className={`${centered ? 'text-center' : 'w-5/6 lg:w-3/5'}`}>
       {/* Title */}
       {title && (
-        <div className="text-3xl font-extrabold tracking-tight md:text-5xl">
+        <div className="text-3xl font-basement-grotesque uppercase font-extrabold tracking-tight md:text-5xl">
           {title}
         </div>
       )}

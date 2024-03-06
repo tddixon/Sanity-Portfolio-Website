@@ -1,4 +1,3 @@
-import '@/styles/index.css'
 
 import { toPlainText } from '@portabletext/react'
 import { Metadata, Viewport } from 'next'
@@ -8,7 +7,6 @@ import { Suspense } from 'react'
 
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
-import IntroTemplate from '@/intro-template'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
@@ -50,7 +48,7 @@ export default async function IndexRoute({
 }) {
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-white text-black">
+      <div className="flex min-h-screen flex-col ">
         <Suspense>
           <Navbar />
         </Suspense>
