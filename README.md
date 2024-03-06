@@ -1,7 +1,6 @@
 #Staging Site
 
-
-staging site for testing: [Staging Site](https://portfolio-2024-staging.vercel.app/) 
+staging site for testing: [Staging Site](https://portfolio-2024-staging.vercel.app/)
 
 This starter is a statically generated personal website that uses [Next.js][nextjs] for the frontend and [Sanity][sanity-homepage] to handle its content. It comes with a native Sanity Studio that offers features like real-time collaboration and visual editing with live updates using [Presentation][presentation].
 
@@ -143,4 +142,5 @@ You can remove it by deleting the `IntroTemplate` component in `/app/(personal)/
 [vercel-github]: https://github.com/vercel/next.js/discussions
 [personal-website-pages]: https://github.com/sanity-io/template-nextjs-personal-website
 [presentation]: https://www.sanity.io/docs/presentation
+
 # Portfolio-2024
