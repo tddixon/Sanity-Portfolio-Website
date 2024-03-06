@@ -1,3 +1,4 @@
+//@ts-ignore
 import { HomeIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
@@ -60,7 +61,7 @@ export default defineType({
     }),
     defineField({
       name: 'showcaseProjects',
-      title: 'Showcase projects',
+      title: 'Featured projects',
       description:
         'These are the projects that will appear first on your landing page.',
       type: 'array',
