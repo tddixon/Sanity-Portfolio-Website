@@ -66,7 +66,7 @@ export function loadSettings() {
   return loadQuery<SettingsPayload>(
     settingsQuery,
     {},
-    { next: { tags: ['settings', 'home', 'page', 'project'] } },
+    { next: { tags: ['settings', 'home', 'page'] } },
   )
 }
 

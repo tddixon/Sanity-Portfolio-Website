@@ -11,13 +11,16 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
-import page from '@/sanity/schemas/documents/page'
-import project from '@/sanity/schemas/documents/project'
 import duration from '@/sanity/schemas/objects/duration'
 import milestone from '@/sanity/schemas/objects/milestone'
 import timeline from '@/sanity/schemas/objects/timeline'
-import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
+
+import { content } from './sanity/schemas/documents/content'
+import { home } from './sanity/schemas/singletons/home'
+import { page } from './sanity/schemas/singletons/page'
+import articles from './sanity/schemas/documents/articles'
+import project from './sanity/schemas/documents/project'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -34,9 +37,11 @@ export default defineConfig({
       // Singletons
       home,
       settings,
+      page,
       // Documents
       duration,
-      page,
+      content,
+      articles,
       project,
       // Objects
       milestone,

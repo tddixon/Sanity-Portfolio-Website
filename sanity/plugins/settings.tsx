@@ -32,34 +32,52 @@ export const singletonPlugin = (types: string[]) => {
   }
 }
 
-// The StructureResolver is how we're changing the DeskTool structure to linking to document (named Singleton)
-// like how "Home" is handled.
+
+
 export const pageStructure = (
   typeDefArray: DocumentDefinition[],
 ): StructureResolver => {
   return (S) => {
-    // Goes through all of the singletons that were provided and translates them into something the
-    // Desktool can understand
     const singletonItems = typeDefArray.map((typeDef) => {
       return S.listItem()
-        .title(typeDef.title!)
+        .id(`singleton-${typeDef.name}`)
+        .title(`${typeDef.title}`)
         .icon(typeDef.icon)
         .child(
           S.editor()
             .id(typeDef.name)
             .schemaType(typeDef.name)
             .documentId(typeDef.name),
-        )
-    })
+        );
+    });
 
-    // The default root list items (except custom ones)
-    const defaultListItems = S.documentTypeListItems().filter(
-      (listItem) =>
-        !typeDefArray.find((singleton) => singleton.name === listItem.getId()),
-    )
+    const pageItems = S.listItem()
+      .id('page-pages')
+      .title('Pages')
+      .child(S.documentTypeList('page'));
 
-    return S.list()
-      .title('Content')
-      .items([...singletonItems, S.divider(), ...defaultListItems])
-  }
-}
+    const contentListItems = [
+      // S.listItem()
+      //   .id('content-about')
+      //   .title('About')
+      //   .child(S.documentTypeList('content').title("About")),
+      S.listItem()
+        .id('content-post-list')
+        .title('Blog Articles')
+        .child(S.documentTypeList('article').title("Articles")),
+      S.listItem()
+        .id('content-project-list')
+        .title('Project Cases')
+        .child(S.documentTypeList('project').title("Projects")),
+    ];
+
+    return S.list().title('Website').items([
+      ...singletonItems,
+      S.divider(),
+      pageItems,
+      S.divider(),
+      ...contentListItems,
+    ]);
+  };
+};
+

@@ -1,8 +1,11 @@
 //@ts-ignore
+import { definePageType } from '@q42/sanity-plugin-page-tree';
 import { HomeIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-export default defineType({
+import { pageTreeConfig } from '@/page-tree-config';
+
+const _homePageType = defineType({
   name: 'home',
   title: 'Home',
   type: 'document',
@@ -12,11 +15,26 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your personal website.',
+      description: 'the title of the page',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'subtitle',
+      description: 'In case you want 2 word Title',
+      title: 'Sub Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'pageTitle',
+      description: 'This field is the title of your personal website.',
+      title: 'Page Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+
     defineField({
       name: 'overview',
       description:
@@ -59,19 +77,6 @@ export default defineType({
       ],
       validation: (rule) => rule.max(155).required(),
     }),
-    defineField({
-      name: 'showcaseProjects',
-      title: 'Featured projects',
-      description:
-        'These are the projects that will appear first on your landing page.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'reference',
-          to: [{ type: 'project' }],
-        }),
-      ],
-    }),
   ],
   preview: {
     select: {
@@ -85,3 +90,8 @@ export default defineType({
     },
   },
 })
+
+export const home = definePageType(_homePageType, pageTreeConfig, {
+  isRoot: true
+});
+

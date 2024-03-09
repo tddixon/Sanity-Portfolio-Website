@@ -18,7 +18,7 @@ export default function Navbar(props: NavbarProps) {
   const otherMenuItems = menuItems.filter((item) => item?._type !== 'home')
 
   return (
-    <div className="sticky top-0 z-10 justify-between w-full  flex flex-wrap items-center gap-x-5  px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-18">
+    <div className="fixed top-0 z-10 justify-between w-full  flex  items-center gap-x-5   backdrop-blur h-20 px-6 ">
       {homeMenuItem && (() => {
         const href = resolveHref(homeMenuItem?._type, homeMenuItem?.slug);
         if (!href) {
@@ -31,15 +31,13 @@ export default function Navbar(props: NavbarProps) {
             className="text-lg font-extrabold text-black hover:text-black md:text-xl"
             href={href}
           >
-            {homeMenuItem.title}
+            {homeMenuItem.pageTitle}
           </Link>
         );
       })()}
-
-
       <div className="flex items-center gap-20">
         {/* Display other links */}
-        <nav className="flex gap-5">
+        <nav className="hidden lg:flex gap-5">
           {otherMenuItems.map((menuItem, key) => {
             const href = resolveHref(menuItem?._type, menuItem?.slug)
             if (!href) {
@@ -51,7 +49,7 @@ export default function Navbar(props: NavbarProps) {
                 className="text-lg text-gray-600 hover:text-black md:text-xl"
                 href={href}
               >
-                {menuItem.title}
+                {menuItem.pageTitle}
               </Link>
             )
           })}

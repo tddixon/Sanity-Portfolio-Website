@@ -4,7 +4,7 @@ import type { Image } from 'sanity'
 export interface MenuItem {
   _type: string
   slug?: string
-  title?: string
+  pageTitle?: string
 }
 
 export interface MilestoneItem {
@@ -24,7 +24,7 @@ export interface ShowcaseProject {
   overview?: PortableTextBlock[]
   slug?: string
   tags?: string[]
-  title?: string
+  pageTitle?: string
 }
 
 // Page payloads
@@ -34,6 +34,7 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[]
   showcaseProjects?: ShowcaseProject[]
   title?: string
+  subtitle?: string;
 }
 
 export interface PagePayload {

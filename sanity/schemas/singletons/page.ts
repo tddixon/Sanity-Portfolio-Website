@@ -1,7 +1,10 @@
+import { definePageType } from '@q42/sanity-plugin-page-tree';
 import { DocumentIcon, ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-export default defineType({
+import { pageTreeConfig } from '@/page-tree-config';
+
+const _pageType = defineType({
   type: 'document',
   name: 'page',
   title: 'Page',
@@ -9,17 +12,14 @@ export default defineType({
   fields: [
     defineField({
       type: 'string',
-      name: 'title',
-      title: 'Title',
+      name: 'pageTitle',
+      title: 'Page Title',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      type: 'slug',
-      name: 'slug',
-      title: 'Slug',
-      options: {
-        source: 'title',
-      },
+      type: 'string',
+      name: 'title',
+      title: 'Title',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -128,3 +128,7 @@ export default defineType({
     },
   },
 })
+
+
+export const page = definePageType(_pageType, pageTreeConfig);
+

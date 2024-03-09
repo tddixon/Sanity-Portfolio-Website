@@ -53,12 +53,12 @@ export default function TextFitScreen({ height, children }: Props) {
 
   return (
     <div
-      className="flex w-full items-center justify-center overflow-hidden "
+      className="flex max-w-screen-xl mx-auto w-full items-center h-full justify-center "
       style={{ height }}
       ref={containerRef}
     >
       <span
-        className=" mx-auto whitespace-nowrap text-center tracking-tight font-basement-grotesque uppercase "
+        className=" mx-auto leading-none whitespace-nowrap text-center  tracking-tight font-basement-grotesque uppercase "
         ref={textRef}
       >
         {children}

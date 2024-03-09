@@ -12,7 +12,7 @@ export function Page({ data }: PageProps) {
 
   return (
     <div>
-      <div className="mb-14">
+      <div className="">
         {/* Header */}
         <Header title={title} description={overview} />
 
@@ -24,7 +24,6 @@ export function Page({ data }: PageProps) {
           />
         )}
       </div>
-      <div className="absolute left-0 w-screen border-t" />
     </div>
   )
 }
