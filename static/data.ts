@@ -1,81 +1,97 @@
-// Sample product data with random image links from Unsplash
-const products = [
+
+export const products = [
   {
-    title: "Product 1",
-    link: "/product-1",
-    thumbnail: "https://source.unsplash.com/random/?product1",
+    title: "Moonbeam",
+    link: "https://gomoonbeam.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
   },
   {
-    title: "Product 2",
-    link: "/product-2",
-    thumbnail: "https://source.unsplash.com/random/?product2",
+    title: "Cursor",
+    link: "https://cursor.so",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
   },
   {
-    title: "Product 3",
-    link: "/product-3",
-    thumbnail: "https://source.unsplash.com/random/?product3",
+    title: "Rogue",
+    link: "https://userogue.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+  },
+
+  {
+    title: "Editorially",
+    link: "https://editorially.org",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
   },
   {
-    title: "Product 4",
-    link: "/product-4",
-    thumbnail: "https://source.unsplash.com/random/?product4",
+    title: "Editrix AI",
+    link: "https://editrix.ai",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
   },
   {
-    title: "Product 5",
-    link: "/product-5",
-    thumbnail: "https://source.unsplash.com/random/?product5",
+    title: "Pixel Perfect",
+    link: "https://app.pixelperfect.quest",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+  },
+
+  {
+    title: "Algochurn",
+    link: "https://algochurn.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
   },
   {
-    title: "Product 6",
-    link: "/product-6",
-    thumbnail: "https://source.unsplash.com/random/?product6",
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
   },
   {
-    title: "Product 7",
-    link: "/product-7",
-    thumbnail: "https://source.unsplash.com/random/?product7",
+    title: "Tailwind Master Kit",
+    link: "https://tailwindmasterkit.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
   },
   {
-    title: "Product 8",
-    link: "/product-8",
-    thumbnail: "https://source.unsplash.com/random/?product8",
+    title: "SmartBridge",
+    link: "https://smartbridgetech.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
   },
   {
-    title: "Product 9",
-    link: "/product-9",
-    thumbnail: "https://source.unsplash.com/random/?product9",
+    title: "Renderwork Studio",
+    link: "https://renderwork.studio",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
+  },
+
+  {
+    title: "Creme Digital",
+    link: "https://cremedigital.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
   },
   {
-    title: "Product 10",
-    link: "/product-10",
-    thumbnail: "https://source.unsplash.com/random/?product10",
+    title: "Golden Bells Academy",
+    link: "https://goldenbellsacademy.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
   },
   {
-    title: "Product 11",
-    link: "/product-11",
-    thumbnail: "https://source.unsplash.com/random/?product11",
+    title: "Invoker Labs",
+    link: "https://invoker.lol",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/invoker.png",
   },
   {
-    title: "Product 12",
-    link: "/product-12",
-    thumbnail: "https://source.unsplash.com/random/?product12",
-  },
-  {
-    title: "Product 13",
-    link: "/product-13",
-    thumbnail: "https://source.unsplash.com/random/?product13",
-  },
-  {
-    title: "Product 14",
-    link: "/product-14",
-    thumbnail: "https://source.unsplash.com/random/?product14",
-  },
-  {
-    title: "Product 15",
-    link: "/product-15",
-    thumbnail: "https://source.unsplash.com/random/?product15",
+    title: "E Free Invoice",
+    link: "https://efreeinvoice.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
   },
 ];
-
-export default products;
 

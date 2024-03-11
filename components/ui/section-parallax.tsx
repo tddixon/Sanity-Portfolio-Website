@@ -1,17 +1,20 @@
-"use client";
+'use client'
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
   useTransform,
   useSpring,
   MotionValue,
+  useInView,
+  stagger,
+  animate,
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-export const SectionParallax = ({
+export const HeroParallax = ({
   products,
 }: {
   products: {
@@ -22,24 +25,39 @@ export const SectionParallax = ({
 }) => {
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
+  const thirdRow = products.slice(10, 15);
   const ref = React.useRef(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust the breakpoint as needed
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: [isMobile ? "start start" : 'start -40%', "end start"],
   });
+
+
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
+
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [0, isMobile ? 1000 : 700]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [0, isMobile ? -1000 : -700]),
     springConfig
   );
   const rotateX = useSpring(
-    useTransform(scrollYProgress, [0, 0.1], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
     springConfig
   );
   const opacity = useSpring(
@@ -51,13 +69,15 @@ export const SectionParallax = ({
     springConfig
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.35], [-700, 200]),
+    useTransform(scrollYProgress, [0, 0.2], isMobile ? [-700, 500] : [-800, 500]),
     springConfig
   );
+
+
   return (
     <div
       ref={ref}
-      className="min-h-[200dvh] py-40 overflow-hidden   antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300lvh] md:h-[420dvh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -69,21 +89,23 @@ export const SectionParallax = ({
         }}
         className=""
       >
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-10 mb-14">
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
           {firstRow.map((product) => (
             <ProductCard
               product={product}
               translate={translateX}
               key={product.title}
+              isMobile={isMobile}
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-14 space-x-10 ">
+        <motion.div className="flex flex-row  mb-20 space-x-20 ">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
               translate={translateXReverse}
               key={product.title}
+              isMobile={isMobile}
             />
           ))}
         </motion.div>
@@ -93,10 +115,44 @@ export const SectionParallax = ({
 };
 
 export const Header = () => {
+  const textRef = useRef<HTMLElement | any>(null);
+  const inView = useInView(textRef, { once: true })
+
+
+
+  useEffect(() => {
+    animate(".char", {
+      y: '0%',
+    }, {
+      ease: [0.16, 1, 0.3, 1],
+    })
+
+
+
+  }, [inView])
+
+
+
+
+
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 className="text-2xl mix-blend-exclusion uppercase md:text-7xl font-bold dark:text-white">
-        Building Next <br />  Level Products
+      <h1 ref={textRef} className="text-6xl leading-none md:text-8xl tracking-tight   uppercase font-bold dark:text-white">
+        <span className="inline-block overflow-hidden">
+          {"Developing next level Products".split("").map((char, idx) => {
+            return (
+              <motion.span
+                key={`char-${idx}`}
+                className=" overflow-hidden inline-block font-basement-grotesque"
+              >
+                <span className="char translate-y-[100%]  inline-block">
+                  {char}
+                </span>
+              </motion.span>
+            )
+          })}
+        </span>
+
       </h1>
     </div>
   );
@@ -105,6 +161,7 @@ export const Header = () => {
 export const ProductCard = ({
   product,
   translate,
+  isMobile,
 }: {
   product: {
     title: string;
@@ -112,30 +169,34 @@ export const ProductCard = ({
     thumbnail: string;
   };
   translate: MotionValue<number>;
+  isMobile: boolean;
 }) => {
+  if (!product) {
+    return null;
+  }
+
   return (
     <motion.div
       style={{
         x: translate,
       }}
       whileHover={{
-        y: -20,
+        y: isMobile ? -10 : -20, // Adjust hover effect based on device type
       }}
       key={product.title}
-      className="group/product  h-96 w-[30rem] relative flex-shrink-0"
+      className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
       <Link
         href={product.link}
-        className="block w-full h-full relative bg-black dark:bg-stone-100 "
+        className="block group-hover/product:shadow-2xl "
       >
         <Image
           src={product.thumbnail}
-          height="300"
-          width="300"
-          className="object-cover absolute h-full p-6 w-full inset-0"
+          height="600"
+          width="600"
+          className="object-cover object-left-top absolute h-full w-full inset-0"
           alt={product.title}
         />
-
       </Link>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
       <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">

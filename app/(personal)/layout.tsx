@@ -51,7 +51,7 @@ export default async function IndexRoute({
         <Suspense>
           <Navbar />
         </Suspense>
-        <div className="flex-grow overflow-hidden z-0  ">
+        <div className="flex-grow overflow-x-hidden z-0  ">
           <Suspense>{children}</Suspense>
         </div>
         <Suspense>

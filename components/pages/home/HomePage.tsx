@@ -5,9 +5,9 @@ import Link from 'next/link'
 import { Header } from '@/components/shared/Header'
 import { resolveHref } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
-import { SectionParallax } from '@/components/ui/section-parallax'
+import { HeroParallax } from '@/components/ui/section-parallax'
 import project from '@/sanity/schemas/documents/project'
-import products from '@/static/data'
+import { products } from '@/static/data'
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -46,9 +46,12 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
       {/*     })} */}
       {/*   </div> */}
       {/* )} */}
-      <SectionParallax products={products} />
+      <div className='min-h-dvh'>
+      </div>
+      <div>
+        <HeroParallax products={products} />
+      </div>
     </div>
   )
-}
+};
 
-export default HomePage
