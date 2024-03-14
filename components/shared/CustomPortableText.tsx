@@ -4,6 +4,7 @@ import { Image } from 'sanity'
 
 import ImageBox from '@/components/shared/ImageBox'
 import { TimelineSection } from '@/components/shared/TimelineSection'
+import P from '../ui/text-generate-effect'
 
 export function CustomPortableText({
   paragraphClasses,
@@ -15,7 +16,7 @@ export function CustomPortableText({
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => {
-        return <p className={paragraphClasses}>{children}</p>
+        return <P className={paragraphClasses}>{children}</P>
       },
     },
     marks: {

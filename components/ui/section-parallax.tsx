@@ -131,8 +131,6 @@ const Header = ({ text }: { text: string }) => {
 
   useEffect(() => {
 
-    const chars = document.querySelectorAll('.char')
-    const line = document.querySelector('.headingline') as HTMLHRElement
 
 
 
@@ -142,6 +140,9 @@ const Header = ({ text }: { text: string }) => {
         Splitting.default({ target: textRef.current, by: 'chars' })
       });
     }
+
+    const chars = textRef.current.querySelectorAll('.char')
+    const line = document.querySelector('.headingline') as HTMLHRElement
 
 
 
@@ -177,10 +178,10 @@ const Header = ({ text }: { text: string }) => {
       <div className=" relative flex">
         <motion.span
           ref={textRef}
-          className="text relative leading-1 mx-auto text-5xl inline-block overflow-hidden xl:text-9xl leading-1 ">
+          className="text relative leading-1 text-accent-foreground mx-auto text-5xl inline-block overflow-hidden xl:text-9xl leading-1 ">
           {text}
         </motion.span>
-        <hr className='headingline origin-right  absolute border w-[50px] xl:w-[150px] border-primary right-5 bottom-[25%] mx-auto' />
+        <hr className='headingline origin-right border-accent-foreground  absolute border w-[50px] xl:w-[150px]  right-5 bottom-[25%] mx-auto' />
       </div>
     </div>
   );
