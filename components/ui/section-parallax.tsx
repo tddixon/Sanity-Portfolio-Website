@@ -1,18 +1,19 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
-  useScroll,
-  useTransform,
-  useSpring,
   MotionValue,
-  useInView,
   stagger,
-  animate,
+  useAnimate,
+  useAnimation,
+  useInView,
+  useScroll,
+  useSpring,
+  useTransform,
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
 
 export const HeroParallax = ({
   products,
@@ -61,7 +62,7 @@ export const HeroParallax = ({
     springConfig
   );
   const opacity = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    useTransform(scrollYProgress, [0, 0.2], [0, 1]),
     springConfig
   );
   const rotateZ = useSpring(
@@ -72,6 +73,11 @@ export const HeroParallax = ({
     useTransform(scrollYProgress, [0, 0.2], isMobile ? [-700, 500] : [-800, 500]),
     springConfig
   );
+  const zIndex = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [0, 10]),
+    springConfig
+  );
+
 
 
   return (
@@ -79,13 +85,14 @@ export const HeroParallax = ({
       ref={ref}
       className="h-[300lvh] md:h-[420dvh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
-      <Header />
+      <Header text={"Next Level Development"} />
       <motion.div
         style={{
           rotateX,
           rotateZ,
           translateY,
           opacity,
+          zIndex
         }}
         className=""
       >
@@ -114,46 +121,67 @@ export const HeroParallax = ({
   );
 };
 
-export const Header = () => {
-  const textRef = useRef<HTMLElement | any>(null);
-  const inView = useInView(textRef, { once: true })
+
+const Header = ({ text }: { text: string }) => {
+  const textRef = useRef<HTMLSpanElement | any>(null);
+  const [scope, animate] = useAnimate()
+  const inView = useInView(textRef)
 
 
 
   useEffect(() => {
-    animate(".char", {
-      y: '0%',
-    }, {
-      ease: [0.16, 1, 0.3, 1],
-    })
+
+    const chars = document.querySelectorAll('.char')
+    const line = document.querySelector('.headingline') as HTMLHRElement
 
 
 
-  }, [inView])
+    if (typeof window !== 'undefined') {
+      import('splitting').then((Splitting) => {
+
+        Splitting.default({ target: textRef.current, by: 'chars' })
+      });
+    }
 
 
 
+    if (inView) {
+      animate('.word', {
+        display: "inline-block",
+        overflow: "hidden",
+      })
+      animate(chars, {
+        display: "inline-block",
+        opacity: [0, 0.5, 1],
+        y: ["100%", "0%"],
+      }, {
+        duration: .8,
+        delay: stagger(.025),
+        ease: 'easeInOut'
+
+      })
+      animate(line, {
+        scaleX: [0, 1],
+      }, {
+        duration: 1.2
+      })
+    }
+
+
+
+  }, [animate, inView, textRef])
 
 
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
-      <h1 ref={textRef} className="text-6xl leading-none md:text-8xl tracking-tight   uppercase font-bold dark:text-white">
-        <span className="inline-block overflow-hidden">
-          {"Developing next level Products".split("").map((char, idx) => {
-            return (
-              <motion.span
-                key={`char-${idx}`}
-                className=" overflow-hidden inline-block font-basement-grotesque"
-              >
-                <span className="char translate-y-[100%]  inline-block">
-                  {char}
-                </span>
-              </motion.span>
-            )
-          })}
-        </span>
-
-      </h1>
+    <div ref={scope} className="max-w-6xl z-10 relative mx-auto py-20 md:py-40 px-4  w-full ">
+      <div className=" relative flex">
+        <motion.span
+          ref={textRef}
+          className="text relative leading-1 mx-auto text-5xl inline-block overflow-hidden xl:text-9xl leading-1 ">
+          {text}
+        </motion.span>
+        <hr className='headingline origin-right  absolute border w-[50px] xl:w-[150px] border-primary right-5 bottom-[25%] mx-auto' />
+      </div>
     </div>
   );
 };

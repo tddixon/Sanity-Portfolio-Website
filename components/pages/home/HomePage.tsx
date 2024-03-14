@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 // import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
-import { resolveHref } from '@/sanity/lib/utils'
-import type { HomePagePayload } from '@/types'
 import { HeroParallax } from '@/components/ui/section-parallax'
+import { resolveHref } from '@/sanity/lib/utils'
 import project from '@/sanity/schemas/documents/project'
 import { products } from '@/static/data'
+import type { HomePagePayload } from '@/types'
 
 export interface HomePageProps {
   data: HomePagePayload | null

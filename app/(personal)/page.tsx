@@ -6,7 +6,7 @@ import { HomePage } from '@/components/pages/home/HomePage'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadHomePage } from '@/sanity/loader/loadQuery'
 const HomePagePreview = dynamic(
-  () => import('@/components/pages/home/HomePagePreview'),
+  () => import('../../components/pages/home/HomePagePreview'),
 )
 
 export default async function IndexRoute() {

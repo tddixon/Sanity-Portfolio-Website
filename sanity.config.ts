@@ -16,11 +16,11 @@ import milestone from '@/sanity/schemas/objects/milestone'
 import timeline from '@/sanity/schemas/objects/timeline'
 import settings from '@/sanity/schemas/singletons/settings'
 
+import articles from './sanity/schemas/documents/articles'
 import { content } from './sanity/schemas/documents/content'
+import project from './sanity/schemas/documents/project'
 import { home } from './sanity/schemas/singletons/home'
 import { page } from './sanity/schemas/singletons/page'
-import articles from './sanity/schemas/documents/articles'
-import project from './sanity/schemas/documents/project'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
