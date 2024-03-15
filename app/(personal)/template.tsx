@@ -1,7 +1,8 @@
 import { ReactNode, useEffect } from "react";
-import { SettingsPayload } from "@/types";
-import { loadSettings } from "@/sanity/loader/loadQuery";
+
 import PageTransition from "@/components/shared/pageTransition";
+import { loadSettings } from "@/sanity/loader/loadQuery";
+import { SettingsPayload } from "@/types";
 
 interface TemplateProps {
   children: ReactNode;

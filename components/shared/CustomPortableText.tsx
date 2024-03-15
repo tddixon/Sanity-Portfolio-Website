@@ -4,6 +4,7 @@ import { Image } from 'sanity'
 
 import ImageBox from '@/components/shared/ImageBox'
 import { TimelineSection } from '@/components/shared/TimelineSection'
+
 import P from '../ui/text-generate-effect'
 
 export function CustomPortableText({

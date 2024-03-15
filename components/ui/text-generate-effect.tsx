@@ -1,8 +1,9 @@
 'use client'
 
-import { cn } from "@/lib/utils";
 import { animate, motion, scroll } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react"
+
+import { cn } from "@/lib/utils";
 
 
 export default function P({ children, className }: { className?: string, children: ReactNode }) {

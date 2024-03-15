@@ -1,15 +1,15 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Link from 'next/link'
 
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 // import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import { Header } from '@/components/shared/Header'
 import { HeroParallax } from '@/components/ui/section-parallax'
+import TextReveal from '@/components/ui/text-reveal'
 import { resolveHref } from '@/sanity/lib/utils'
 import project from '@/sanity/schemas/documents/project'
 import { products } from '@/static/data'
 import type { HomePagePayload } from '@/types'
-import TextReveal from '@/components/ui/text-reveal'
-import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
 export interface HomePageProps {
   data: HomePagePayload | null

@@ -5,6 +5,7 @@ import { type QueryResponseInitial } from '@sanity/react-loader'
 import { homePageQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
 import { HomePagePayload } from '@/types'
+
 import HomePage from './HomePage'
 
 

@@ -1,9 +1,10 @@
 'use client'
+import { AnimatePresence, useAnimate, usePresence, Variants } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { ReactNode, useEffect, useState } from "react";
+
 import { resolveHref } from "@/sanity/lib/utils";
 import { SettingsPayload } from "@/types";
-import { ReactNode, useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-import { AnimatePresence, Variants, useAnimate, usePresence } from "framer-motion";
 
 interface TransitionProps {
   data: SettingsPayload;
@@ -71,7 +72,7 @@ export default function PageTransition(props: TransitionProps) {
 
 
 
-  }, [pathName, loading, scope, animate]); // useEffect runs whenever pathName changes
+  }, [pathName, scope, animate]); // useEffect runs whenever pathName changes
 
 
 
