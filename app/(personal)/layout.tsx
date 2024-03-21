@@ -23,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: homePage?.title
       ? {
-        template: `%s | ${homePage.title}`,
-        default: 'Judah Sullivan' || homePage.title,
-      }
+          template: `%s | ${homePage.title}`,
+          default: 'Noho' || homePage.title,
+        }
       : undefined,
     description: homePage?.overview
       ? toPlainText(homePage.overview)

@@ -12,23 +12,29 @@
     "lint": "next lint -- --ignore-path .gitignore",
     "lint:fix": "bun run format && bun run eslint --fix",
     "start": "next start",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.9",
     "@fontsource/aileron": "^5.0.7",
     "@portabletext/react": "3.0.11",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.5",
     "@sanity/demo": "2.0.0",
     "@sanity/image-url": "1.0.2",
     "@sanity/preview-url-secret": "1.6.4",
     "@sanity/react-loader": "1.9.1",
     "@sanity/vision": "3.30.1",
+    "@t3-oss/env-nextjs": "^0.9.2",
     "@tailwindcss/typography": "0.5.10",
     "class-variance-authority": "^0.7.0",
     "classnames": "2.5.1",
@@ -37,15 +43,17 @@
     "lucide-react": "^0.344.0",
     "next": "14.1.1",
     "next-sanity": "8.1.3",
-    "next-themes": "^0.2.1",
+    "next-themes": "^0.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "3.30.1",
     "sanity-plugin-asset-source-unsplash": "1.1.2",
     "server-only": "0.0.1",
+    "sonner": "^1.4.41",
     "styled-components": "6.1.8",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "18.2.62",
@@ -57,7 +65,9 @@
     "prettier": "3.2.5",
     "prettier-plugin-packagejson": "2.4.12",
     "prettier-plugin-tailwindcss": "0.5.11",
+    "prisma": "^5.11.0",
     "tailwindcss": "3.4.1",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "zod-prisma": "^0.5.4"
   }
 }
